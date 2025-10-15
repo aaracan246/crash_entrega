@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b37n5on415ve7"]
+
+[ext_resource type="Texture2D" uid="uid://bcm03tq4bdjje" path="res://assets/crash_pine.png" id="1_lk1g2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0qx3"]
+radius = 78.0
+height = 308.0
+
+[node name="Obstacle" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(26, -12)
+scale = Vector2(1.54687, 1.45313)
+texture = ExtResource("1_lk1g2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, -32)
+shape = SubResource("CapsuleShape2D_j0qx3")

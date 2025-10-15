@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7cftl2n5ycwf"]
+
+[ext_resource type="Script" uid="uid://vdcskjhtsdfr" path="res://obstacle.gd" id="1_aubd6"]
+[ext_resource type="Texture2D" uid="uid://dq7o6xmssuwom" path="res://assets/crash_awela.png" id="1_xpq86"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0qx3"]
+radius = 39.0
+height = 206.0
+
+[node name="Obstacle" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_aubd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(26, -12)
+scale = Vector2(1.54687, 1.45313)
+texture = ExtResource("1_xpq86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 1)
+shape = SubResource("CapsuleShape2D_j0qx3")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 106)
+target_position = Vector2(0, 29)
+collision_mask = 255
+
+[connection signal="point" from="." to="." method="_on_point"]

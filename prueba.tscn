@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://w3iarhaepbbm"]
+
+[ext_resource type="PackedScene" uid="uid://bcvr35ns45xrm" path="res://spawner.tscn" id="1_0yugi"]
+[ext_resource type="PackedScene" uid="uid://bpfdf8hlos0ki" path="res://road.tscn" id="1_thbek"]
+[ext_resource type="Texture2D" uid="uid://cix42cd6b8a7p" path="res://assets/Crash_bg_noroad.png" id="1_wvuj6"]
+[ext_resource type="PackedScene" uid="uid://b7cftl2n5ycwf" path="res://obstacle.tscn" id="2_wovom"]
+[ext_resource type="PackedScene" uid="uid://b37n5on415ve7" path="res://obstacle2.tscn" id="3_8bjpd"]
+[ext_resource type="PackedScene" uid="uid://f8uk7jbqmxr2" path="res://car.tscn" id="3_wrsit"]
+[ext_resource type="Script" uid="uid://b6ykfikk3j566" path="res://score.gd" id="6_20kv3"]
+[ext_resource type="Script" uid="uid://csj7w06x8fbq6" path="res://scorepoints.gd" id="8_3plae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q58k3"]
+size = Vector2(166, 642.282)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-1, 2)
+
+[node name="Spawner" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(417.055, 458)
+obstacle_scene = ExtResource("2_wovom")
+spawn_interval = 5.0
+
+[node name="Spawner2" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(595.23, 458)
+obstacle_scene = ExtResource("2_wovom")
+spawn_interval = 3.5
+
+[node name="Spawner3" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(758.465, 458)
+obstacle_scene = ExtResource("3_8bjpd")
+spawn_interval = 4.5
+
+[node name="Spawner4" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(195.365, 458)
+obstacle_scene = ExtResource("3_8bjpd")
+spawn_interval = 8.0
+
+[node name="Spawner5" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(90.04, 458)
+obstacle_scene = ExtResource("3_8bjpd")
+spawn_interval = 2.0
+
+[node name="Spawner6" parent="." instance=ExtResource("1_0yugi")]
+z_index = 1
+position = Vector2(920.755, 458)
+obstacle_scene = ExtResource("3_8bjpd")
+spawn_interval = 7.0
+
+[node name="Road" parent="." instance=ExtResource("1_thbek")]
+z_index = 1
+position = Vector2(513.87, 511.52)
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(513, 511)
+texture = ExtResource("1_wvuj6")
+
+[node name="car" parent="." instance=ExtResource("3_wrsit")]
+z_index = 5
+position = Vector2(501, 918)
+scale = Vector2(0.8, 0.8)
+collision_mask = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(214.501, 702.201)
+rotation = 0.261799
+shape = SubResource("RectangleShape2D_q58k3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(797, 697)
+rotation = -0.296706
+shape = SubResource("RectangleShape2D_q58k3")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1.0
+offset_right = 1026.0
+offset_bottom = 1028.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Time: 0"
+script = ExtResource("6_20kv3")
+label_node_path = NodePath(".")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"
+script = ExtResource("8_3plae")

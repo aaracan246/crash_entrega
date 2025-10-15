@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpfdf8hlos0ki"]
+
+[ext_resource type="Texture2D" uid="uid://coujvxjbov1hy" path="res://assets/Crash_bg_road_whitelines_equal.png" id="1_fqgmn"]
+
+[node name="Road" type="Sprite2D"]
+texture = ExtResource("1_fqgmn")
